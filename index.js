@@ -269,7 +269,7 @@ client.on('message', message => {
  
  
  
-  client.on('message', async message => {
+  client.on('message', message => {
   if(message.content.startsWith(prefix + "apply")) {
     var gg = message.guild.channels.find('name', 'التقديمات')
     if(!gg) return;
@@ -418,7 +418,7 @@ if (message.content.startsWith(prefix + "cv")) {
 });
 
 
-client.on('message',async message => {
+client.on('message', message => {
     if(message.content.startsWith(prefix + "setVoice")) {
     if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
     if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
@@ -614,7 +614,7 @@ client.on('message' , message => {
   }
   });
   
-  client.on('message', async message => {
+  client.on('message', message => {
     let args = message.content.split(" ");
     if(message.content.startsWith(prefix + "mute")) {
       if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
@@ -704,7 +704,7 @@ client.on('message' , message => {
       },duration * 60000); //kinggamer حقوق الفا كودز و
     }
   });
-  client.on('message', async message => {
+  client.on('message', message => {
       let mention = message.mentions.members.first();
   let command = message.content.split(" ")[0];
        command = command.slice(prefix.length);
@@ -723,7 +723,7 @@ client.on('message' , message => {
    
     if(!role || !kinggamer.roles.has(role.id)) return message.channel.sendMessage(`**:information_source:${mention.user.username} لقد تم فك الميوت عنه مسبقا**`)
    
-    await kinggamer.removeRole(role) //kinggamer حقوق الفا كودز و
+    kinggamer.removeRole(role) //kinggamer حقوق الفا كودز و
     message.channel.sendMessage(`**:white_check_mark: ${mention.user.username}  Unmuted! **`);
    
     return;
@@ -873,4 +873,4 @@ client.on('message' , message => {
     });
     
 
-client.login(process.env.UNITED_SYSTEM);
+client.login(process.env.WIND_SYSTEM);
