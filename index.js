@@ -161,13 +161,13 @@ client.on("message", message => {
  اكتبي موافقة او لا**`)
 
 const filter = m => m.content.startsWith("موافقة");
-message.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
+message.channel.Messages(filter, { max: 1, time: 15000, errors: ['time'] })
 .then(collected =>{ 
     message.channel.send(` **${message.author} و ${proposed} الف الف مبروك الله , يرزقكم الذرية الصالحة** `);
 })
 
    const filte = m => m.content.startsWith("لا");
-message.channel.awaitMessages(filte, { max: 1, time: 15000, errors: ['time'] })
+message.channel.Messages(filte, { max: 1, time: 15000, errors: ['time'] })
 .then(collected =>{ 
    message.channel.send(`  **${message.author} تم رفض عرضك** `);
 })
@@ -273,24 +273,24 @@ client.on('message', message => {
   if(message.content.startsWith(prefix + "apply")) {
     var gg = message.guild.channels.find('name', 'التقديمات')
     if(!gg) return;
-    await message.channel.send("**الاسم**").then(e => {
+     message.channel.send("**الاسم**").then(e => {
     let filter = m => m.author.id === message.author.id
     let lan = '';
     let md = '';
     let br = '';
-    let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+    let chaLan = message.channel.Messages(filter, { max: 1, time: 40000, errors: ['time'] })
     .then(collected => {
       lan = collected.first().content
       collected.first().delete()
 e.delete();
      message.channel.send('**العمر**').then(m => {
-let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+let chaMd = message.channel.Messages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(co => {
   md = co.first().content
         co.first().delete()
         m.delete();
 message.channel.send('**ماذا تستطيع ان تقدم للسيرفر**').then(ms => {
-let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+let br = message.channel.Messages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(col => {
   br = col.first().content
         col.first().delete()
@@ -788,7 +788,7 @@ client.on("message", (message) => {
  
        message.channel.send(`هل انت متأكد من اقفالك للتذكرة اذا متأكد اكتب $confirm`)
            .then((m) => {
-               message.channel.awaitMessages(response => response.content === '$confirm', {
+               message.channel.Messages(response => response.content === '$confirm', {
                        max: 1,
                        time: 10000,
                        errors: ['time'],
